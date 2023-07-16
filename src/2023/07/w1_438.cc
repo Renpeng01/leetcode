@@ -28,6 +28,38 @@ public:
     }
     return res;
   }
+
+  vector<int> findAnagrams1(string s, string p) {
+    size_t p_size = p.size();
+    size_t s_size = s.size();
+
+    if (p_size > s_size) {
+      return {};
+    }
+
+    vector<int> ans;
+    vector<int> s_count(26);
+    vector<int> p_count(26);
+
+    for (int i = 0; i < p_size; ++i) {
+      ++s_count[s[i] - 'a'];
+      ++p_count[p[i] - 'a'];
+    }
+
+    if (s_count == p_count) {
+      ans.emplace_back(0);
+    }
+
+    for (int i = 0; i < s_size - p_size; ++i) {
+      --s_count[s[i] - 'a'];
+      ++s_count[s[i + p_size] - 'a'];
+      if (s_count == p_count) {
+        ans.emplace_back(i + 1);
+      }
+    }
+
+    return ans;
+  }
 };
 
 int main() {
@@ -36,7 +68,7 @@ int main() {
   string s = "cbaebabacd";
   string p = "abc";
 
-  vector<int> result = solution->findAnagrams(s, p);
+  vector<int> result = solution->findAnagrams1(s, p);
 
   for (auto v : result) {
     cout << v << endl;
