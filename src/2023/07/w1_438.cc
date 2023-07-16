@@ -6,7 +6,8 @@
 using namespace std;
 class Solution {
 public:
-  vector<int> findAnagrams(string s, string p) {
+  // 暴力方式  超时
+  vector<int> findAnagrams1(string s, string p) {
     size_t p_size = p.length();
     size_t s_size = s.length();
 
