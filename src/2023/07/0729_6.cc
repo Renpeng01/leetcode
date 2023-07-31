@@ -6,8 +6,22 @@ using namespace std;
 class Solution {
 public:
   string convert(string s, int numRows) {
+    if (numRows == 1) {
+      return s;
+    }
     string result;
-    if (numRows <= 2) {
+    if (numRows == 2) {
+      string result1;
+      string result2;
+      for (int i = 0; i < s.size(); i++) {
+        if ((i % 2) == 0) {
+          result1 += s[i];
+        } else {
+          result2 += s[i];
+        }
+      }
+
+      return result1 + result2;
     }
 
     string::size_type size = s.size();
