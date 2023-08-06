@@ -35,9 +35,17 @@ public:
         }
 
         if (diff > 0) {
-          --pc;
+          int pc0 = pc - 1;
+          while (pb < pc0 && nums[pc0] == nums[pc]) {
+            --pc0;
+          }
+          pc = pc0;
         } else {
-          ++pb;
+          int pb0 = pb + 1;
+          while (pb0 < pc && nums[pb0] == nums[pb]) {
+            ++pb0;
+          }
+          pb = pb0;
         }
       }
     }
