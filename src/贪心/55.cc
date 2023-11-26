@@ -14,12 +14,9 @@ public:
       if (maxCover >= (nums.size() - 1)) {
         return true;
       }
-
       if (maxCover > i) {
         continue;
-
       } else {
-
         return false;
       }
     }
