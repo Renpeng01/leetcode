@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 
+// 与55类似，但是不好想，需要复习
 class Solution {
 public:
   int jump(std::vector<int> &nums) {
