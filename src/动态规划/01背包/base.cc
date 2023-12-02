@@ -43,6 +43,8 @@ public:
 
     for (int i = 1; i < goods; i++) {
       for (int j = 0; j <= bag; j++) {
+
+        // 这个判断容易忽略 （当无法装下weightw为i的时候）
         if (j - weight[i] < 0) {
           dp[i][j] = dp[i - 1][j];
         } else {
