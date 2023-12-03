@@ -93,7 +93,7 @@ public:
     for (int i = 0; i < goods; i++) {
       // ***********************  这里的遍历顺序是重点
       // (仅仅与01背包的遍历顺序不同)
-      for (int j = weight[i]; j < bag; j++) {
+      for (int j = weight[i]; j <= bag; j++) {
         // 这个判断容易忽略 （当无法装下weightw为i的时候）
         if (j - weight[i] < 0) {
           dp[j] = dp[j];
