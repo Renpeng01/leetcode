@@ -43,7 +43,6 @@ public:
 
     for (int i = 1; i < goods; i++) {
       for (int j = 0; j <= bag; j++) {
-
         // 这个判断容易忽略 （当无法装下weightw为i的时候）
         if (j - weight[i] < 0) {
           dp[i][j] = dp[i - 1][j];
@@ -57,6 +56,31 @@ public:
 
     return dp[goods - 1][bag];
   }
+
+  // 一维数组实现01背包 （滚动数组）
+  int func1(std::vector<int> weight, std::vector<int> value, int bag) {
+    std::vector<int> dp(bag + 1, 0);
+    int goods = weight.size();
+
+    for (int i = 1; i <= bag; i++) {
+      if (weight[0] > i) {
+        continue;
+      }
+      dp[i] = value[0];
+    }
+
+    for (int i = 1; i < goods; i++) {
+      for (int j = 0; j <= bag; j++) {
+        // 这个判断容易忽略 （当无法装下weightw为i的时候）
+        if (j - weight[i] < 0) {
+          dp[j] = dp[j];
+        } else {
+          dp[j] = std::max(dp[j], dp[j - weight[i]] + value[i]);
+        }
+      }
+    }
+    return dp[bag];
+  }
 };
 int main() {
   Solution s;
@@ -65,5 +89,8 @@ int main() {
   int bag = 4;
 
   int res = s.func(weight, value, bag);
-  std::cout << res << std::endl;
+  std::cout << "func1: " << res << std::endl;
+
+  int res1 = s.func1(weight, value, bag);
+  std::cout << "func1: " << res1 << std::endl;
 }
