@@ -83,6 +83,8 @@ public:
 
 // ****************** 【完全背包】******************
 // 物品可以使用无数次
+// https://www.bilibili.com/video/BV1uK411o7c9/?spm_id_from=333.788&vd_source=70c464e99440c207e9933663bb2e5166
+
 class Solution1 {
 public:
   // 将01背包的以为数组的遍历顺序从倒序改为正序
