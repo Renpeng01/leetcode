@@ -10,6 +10,8 @@
 // 方i    dp[i-1][j - weight[i]] + value[i]
 // 取max  dp[i][j] = max(dp[i-1][j], dp[i-1][j - weight[i]] + value[i])
 
+// https://www.bilibili.com/video/BV1BU4y177kY/?spm_id_from=333.788&vd_source=70c464e99440c207e9933663bb2e5166
+
 #include <algorithm>
 #include <iostream>
 #include <string>
