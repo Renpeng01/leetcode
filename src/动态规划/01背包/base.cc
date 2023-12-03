@@ -30,6 +30,7 @@ void printDp(std::vector<std::vector<int>> &dp) {
 // https://www.bilibili.com/video/BV1BU4y177kY/?spm_id_from=333.788&vd_source=70c464e99440c207e9933663bb2e5166
 class Solution {
 public:
+  // 二维dp数组的实现
   int func(std::vector<int> weight, std::vector<int> value, int bag) {
     int goods = weight.size();
     std::vector<std::vector<int>> dp;
@@ -60,7 +61,7 @@ public:
     return dp[goods - 1][bag];
   }
 
-  // 一维数组实现01背包 （滚动数组）
+  //  一维dp数组的实现 （滚动数组）
   int func1(std::vector<int> weight, std::vector<int> value, int bag) {
     std::vector<int> dp(bag + 1, 0);
     int goods = weight.size();
