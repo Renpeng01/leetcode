@@ -66,15 +66,7 @@ public:
     std::vector<int> dp(bag + 1, 0);
     int goods = weight.size();
 
-    for (int i = 1; i <= bag; i++) {
-      if (weight[0] > i) {
-        continue;
-      }
-      dp[i] = value[0];
-    }
-
-    for (int i = 1; i < goods; i++) {
-
+    for (int i = 0; i < goods; i++) {
       // ***********************  这里的遍历顺序是重点，是倒序
       for (int j = bag; j >= weight[i]; j--) {
         // 这个判断容易忽略 （当无法装下weightw为i的时候）
