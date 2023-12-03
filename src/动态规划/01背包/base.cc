@@ -70,7 +70,9 @@ public:
     }
 
     for (int i = 1; i < goods; i++) {
-      for (int j = 0; j <= bag; j++) {
+
+      // ***********************  这里的遍历顺序是重点  是倒序
+      for (int j = bag; j >= weight[i]; j--) {
         // 这个判断容易忽略 （当无法装下weightw为i的时候）
         if (j - weight[i] < 0) {
           dp[j] = dp[j];
