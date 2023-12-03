@@ -31,14 +31,14 @@ void printDp(std::vector<std::vector<int>> &dp) {
 class Solution {
 public:
   // 二维dp数组的实现
-  int func(std::vector<int> weight, std::vector<int> value, int bag) {
+  int func(std::vector<int> weight, std::vector<int> value, int beg) {
     int goods = weight.size();
     std::vector<std::vector<int>> dp;
     for (int i = 0; i < goods; i++) {
-      dp.push_back(std::vector<int>(bag + 1));
+      dp.push_back(std::vector<int>(beg + 1));
     }
 
-    for (int i = 1; i <= bag; i++) {
+    for (int i = 1; i <= beg; i++) {
       if (weight[0] > i) {
         continue;
       }
@@ -46,7 +46,7 @@ public:
     }
 
     for (int i = 1; i < goods; i++) {
-      for (int j = 0; j <= bag; j++) {
+      for (int j = 0; j <= beg; j++) {
         // 这个判断容易忽略 （当无法装下weightw为i的时候）
         if (j - weight[i] < 0) {
           dp[i][j] = dp[i - 1][j];
@@ -58,17 +58,17 @@ public:
     }
     // printDp(dp);
 
-    return dp[goods - 1][bag];
+    return dp[goods - 1][beg];
   }
 
   //  一维dp数组的实现 （滚动数组）
-  int func1(std::vector<int> weight, std::vector<int> value, int bag) {
-    std::vector<int> dp(bag + 1, 0);
+  int func1(std::vector<int> weight, std::vector<int> value, int beg) {
+    std::vector<int> dp(beg + 1, 0);
     int goods = weight.size();
 
     for (int i = 0; i < goods; i++) {
       // ***********************  这里的遍历顺序是重点，是倒序
-      for (int j = bag; j >= weight[i]; j--) {
+      for (int j = beg; j >= weight[i]; j--) {
         // 这个判断容易忽略 （当无法装下weightw为i的时候）
         if (j - weight[i] < 0) {
           dp[j] = dp[j];
@@ -77,7 +77,7 @@ public:
         }
       }
     }
-    return dp[bag];
+    return dp[beg];
   }
 };
 
@@ -86,14 +86,14 @@ public:
 class Solution1 {
 public:
   // 将01背包的以为数组的遍历顺序从倒序改为正序
-  int func2(std::vector<int> weight, std::vector<int> value, int bag) {
-    std::vector<int> dp(bag + 1, 0);
+  int func2(std::vector<int> weight, std::vector<int> value, int beg) {
+    std::vector<int> dp(beg + 1, 0);
     int goods = weight.size();
 
     for (int i = 0; i < goods; i++) {
       // ***********************  这里的遍历顺序是重点
       // (仅仅与01背包的遍历顺序不同)
-      for (int j = weight[i]; j <= bag; j++) {
+      for (int j = weight[i]; j <= beg; j++) {
         // 这个判断容易忽略 （当无法装下weightw为i的时候）
         if (j - weight[i] < 0) {
           dp[j] = dp[j];
@@ -102,7 +102,7 @@ public:
         }
       }
     }
-    return dp[bag];
+    return dp[beg];
   }
 };
 
@@ -110,15 +110,15 @@ int main() {
   Solution s;
   std::vector<int> weight = {1, 3, 4};
   std::vector<int> value = {15, 20, 30};
-  int bag = 4;
+  int beg = 4;
 
-  int res = s.func(weight, value, bag);
+  int res = s.func(weight, value, beg);
   std::cout << "func: " << res << std::endl;
 
-  int res1 = s.func1(weight, value, bag);
+  int res1 = s.func1(weight, value, beg);
   std::cout << "func1: " << res1 << std::endl;
 
   Solution1 s1;
-  int res2 = s1.func2(weight, value, bag);
+  int res2 = s1.func2(weight, value, beg);
   std::cout << "func2: " << res2 << std::endl;
 }
