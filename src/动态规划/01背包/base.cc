@@ -27,6 +27,7 @@ void printDp(std::vector<std::vector<int>> &dp) {
   }
 }
 
+// ******************【01背包】******************
 class Solution {
 public:
   int func(std::vector<int> weight, std::vector<int> value, int bag) {
@@ -86,6 +87,10 @@ public:
     return dp[bag];
   }
 };
+
+// ****************** 【完全背包】******************
+class Solution1 {};
+
 int main() {
   Solution s;
   std::vector<int> weight = {1, 3, 4};
