@@ -32,6 +32,8 @@ public:
     if (tmp % 2 == 1) {
       return 0;
     }
+    if (abs(target) > sum)
+      return 0; // 此时没有方案 if((S+sum)%2==1)return0;// 此时没有方案
     int newTarget = (target + sum) / 2;
     std::vector<int> dp(newTarget + 1, 0);
     dp[0] = 1;
