@@ -1,4 +1,3 @@
-#include <algorithm>
 #include <vector>
 
 // dp[i][0] 持有股票最大值
@@ -11,7 +10,7 @@ public:
     dp[0][0] = -prices[0];
     dp[0][1] = 0;
     for (int i = 1; i < prices.size(); i++) {
-      dp[i][0] = std::max(dp[i - 1][0], -prices[i]);
+      dp[i][0] = std::max(dp[i - 1][0], dp[i - 1][1] - prices[i]);
       dp[i][1] = std::max(dp[i - 1][1], dp[i - 1][0] + prices[i]);
     }
 
