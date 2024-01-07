@@ -16,14 +16,13 @@ public:
 
     ListNode *pre = head;
     ListNode *cur = head->next;
+    ListNode *dummayHead = new ListNode(0, head);
+    ListNode *mHead = dummayHead;
 
     ListNode *tempPre;
     ListNode *tempCur;
 
     bool isCountine = false;
-
-    ListNode *dummayHead = new ListNode(0, head);
-    ListNode *mHead = dummayHead;
 
     while (true) {
       if (cur->next != nullptr && cur->next->next != nullptr) {
