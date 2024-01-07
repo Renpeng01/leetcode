@@ -46,4 +46,23 @@ public:
 
     return cur;
   }
+
+  ListNode *reverseList2(ListNode *head) {
+
+    if (head == nullptr || head->next == nullptr) {
+      return head;
+    }
+
+    ListNode *pre = nullptr;
+    ListNode *cur = head;
+    ListNode *temp;
+
+    while (cur) {
+      temp = cur->next;
+      cur->next = pre;
+      pre = cur;
+      cur = temp;
+    }
+    return pre;
+  }
 };
