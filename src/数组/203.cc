@@ -23,28 +23,24 @@ public:
     if (head == nullptr) {
       return nullptr;
     }
-    while (head && head->val == val) {
-      head = head->next;
-    }
     ListNode *preHead = new ListNode();
-    ListNode *tag = new ListNode();
     preHead->next = head;
-    tag->next = head;
+    ListNode *cur = preHead;
 
     while (head != nullptr) {
       if (head->val == val) {
         if (head->next == nullptr) {
-          preHead->next = nullptr;
+          cur->next = nullptr;
           head->next = nullptr;
           break;
         }
-        preHead->next = head->next;
+        cur->next = head->next;
         head = head->next;
       } else {
-        preHead = preHead->next;
+        cur = cur->next;
         head = head->next;
       }
     }
-    return tag->next;
+    return preHead->next;
   }
 };
