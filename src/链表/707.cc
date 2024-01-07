@@ -23,7 +23,7 @@ public:
   }
 
   int get(int index) {
-    if (index >= len) {
+    if (index >= len || index < 0) {
       return -1;
     }
     ListNode *cur = head;
