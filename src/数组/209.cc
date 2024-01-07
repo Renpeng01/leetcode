@@ -11,7 +11,6 @@ public:
     int head = 0, tail = 1, sum = nums[0];
     int minLen = INT_MAX;
     while (true) {
-
       if (sum >= target) {
         for (int i = head; i < tail; i++) {
           if ((sum - nums[i]) >= target) {
@@ -24,7 +23,7 @@ public:
 
         if ((tail - head) < minLen) {
           minLen = tail - head;
-          std::cout << "head: " << head << " tail: " << tail << std::endl;
+          // std::cout << "head: " << head << " tail: " << tail << std::endl;
         }
       }
       if (tail >= nums.size()) {
