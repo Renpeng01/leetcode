@@ -60,4 +60,33 @@ public:
     }
     return match;
   }
+
+  ListNode *detectCycle2(ListNode *head) {
+
+    if (!head) {
+      return nullptr;
+    }
+
+    ListNode *fast = head;
+    ListNode *slow = head;
+    ListNode *index;
+
+    while (fast && fast->next) {
+      slow = slow->next;
+      fast = fast->next->next;
+      if (slow == fast) {
+        index = slow;
+      }
+    }
+
+    if (!fast) {
+      return nullptr;
+    }
+
+    while (index != head) {
+      index = index->next;
+      head = head->next;
+    }
+    return index;
+  }
 };
