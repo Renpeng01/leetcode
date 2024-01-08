@@ -20,7 +20,7 @@ struct ListNode {
 // 从起点到入口位置的距离为x，入口到相遇位置的长度为y， 从相遇位置到入口为z
 // slow x + y
 // fast x + y + n * (y + z)
-// 2 slow = fast
+// 2 * slow = fast
 // 2(x + y) = x + y + n(y + z)
 // x = n(y + z) - y (n >= 1)
 // x = (n-1) (y+1) + z;
