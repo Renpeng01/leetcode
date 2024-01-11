@@ -31,4 +31,23 @@ public:
     }
     return true;
   }
+
+  bool isAnagram2(string s, string t) {
+    int s_arry[26] = {0};
+    int t_arry[26] = {0};
+
+    for (int i = 0; i < s.size(); i++) {
+      s_arry[s[i] - 'a']++;
+    }
+    for (int i = 0; i < t.size(); i++) {
+      t_arry[t[i] - 'a']++;
+    }
+
+    for (int i = 0; i < 26; i++) {
+      if (s_arry[i] != t_arry[i]) {
+        return false;
+      }
+    }
+    return true;
+  }
 };
