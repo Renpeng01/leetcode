@@ -100,7 +100,9 @@
         "semaphore": "cpp",
         "stop_token": "cpp",
         "cinttypes": "cpp",
-        "__verbose_abort": "cpp"
+        "__verbose_abort": "cpp",
+        "span": "cpp",
+        "format": "cpp"
     },
     "editor.minimap.maxColumn": 120,
     "editor.formatOnSave": true,
