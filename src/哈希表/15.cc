@@ -9,30 +9,40 @@ using namespace std;
 class Solution {
 public:
   vector<vector<int>> threeSum(vector<int> &nums) {
-
     unordered_map<string, bool> map;
     vector<vector<int>> res;
     string mCode = "";
+    for (int i = 0; i < nums.size(); i++) {
+      if (nums[i] > 0) {
+        return res;
+      }
+      int left = i + 1;
+      int right = nums.size() - 1;
 
-    sort(nums.begin(), nums.end());
+      while (left < right) {
 
-    int n = nums.size();
-    for (int i = 0; i < n; i++) {
-      for (int j = i + 1; j < n; j++) {
-        for (int m = j + 1; m < n; m++) {
-          mCode = code(nums[i], nums[j], nums[m]);
-          if ((nums[i] + nums[j] + nums[m]) == 0 &&
-              map.find(mCode) == map.end()) {
-            res.push_back({nums[i], nums[j], nums[m]});
+        cout << "i:" << i << " left: " << left << " right: " << right << endl;
+        cout << "sum: " << nums[left] + nums[right] + nums[i]
+             << "vi:" << nums[i] << " vleft: " << nums[left]
+             << " vright: " << nums[right] << endl;
+        if ((nums[left] + nums[right] + nums[i]) > 0) {
+          right--;
+        } else if ((nums[left] + nums[right] + nums[i]) < 0) {
+          left++;
+        } else {
+          cout << "11111" << endl;
+          if (map.find(mCode) == map.end()) {
+            res.push_back(vector<int>{nums[i], nums[left], nums[right]});
             map[mCode] = true;
-            continue;
           }
+          right--;
+          left++;
         }
       }
     }
-
     return res;
   }
+
   string code(int a, int b, int c) {
     string code = "";
     vector<int> s = {a, b, c};
