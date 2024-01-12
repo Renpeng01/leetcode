@@ -27,8 +27,8 @@ public:
     return ans;
   }
 
-  int fourSumCount(vector<int> &nums1, vector<int> &nums2, vector<int> &nums3,
-                   vector<int> &nums4) {
+  int fourSumCount1(vector<int> &nums1, vector<int> &nums2, vector<int> &nums3,
+                    vector<int> &nums4) {
     unordered_map<int, int> map;
 
     for (int i = 0; i < nums1.size(); i++) {
