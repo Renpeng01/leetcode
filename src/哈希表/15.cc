@@ -12,9 +12,10 @@ public:
     unordered_map<string, bool> map;
     vector<vector<int>> res;
     string mCode = "";
+    sort(nums.begin(), nums.end());
     for (int i = 0; i < nums.size(); i++) {
       if (nums[i] > 0) {
-        return res;
+        break;
       }
       int left = i + 1;
       int right = nums.size() - 1;
